@@ -2,230 +2,306 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Seb IT Samedi — Support informatique (samedi uniquement)</title>
-  <meta name="description" content="Support informatique pour particuliers — le samedi uniquement. Apple, Windows, Chromebook. À domicile ou à distance (AnyDesk). Brabant wallon." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Seb IT Samedi — Support informatique le samedi (sur site) + sessions à distance en semaine (soir). Brabant wallon et environs. Prise de rendez-vous 7j/7." />
+  <title>Seb IT Samedi — Support informatique (samedi)</title>
 
   <style>
     :root{
-      --bg:#0b0f1a;
-      --text:#eaeaf0;
-      --muted:#cfd3ff;
-      --card:rgba(20,26,50,.88);
-      --chip:rgba(255,255,255,.10);
-      --shadow: 0 12px 40px rgba(0,0,0,.35);
-      --radius:18px;
+      --bg: #070912;
+      --card: rgba(20, 24, 38, .72);
+      --card2: rgba(20, 24, 38, .62);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --soft: rgba(255,255,255,.10);
+      --accent: #7CF7D6;
+      --accent2:#7ab7ff;
+      --shadow: 0 24px 70px rgba(0,0,0,.45);
+      --radius: 22px;
     }
 
     *{ box-sizing:border-box; }
-
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 15% 10%, rgba(120,90,255,.22), transparent 60%),
-                  radial-gradient(900px 500px at 85% 20%, rgba(110,231,255,.18), transparent 55%),
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 15% 85%, rgba(122,183,255,.22), transparent 60%),
+                  radial-gradient(900px 600px at 85% 15%, rgba(124,247,214,.18), transparent 55%),
                   var(--bg);
-      color:var(--text);
     }
 
-    /* HERO */
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 16px 40px;
+    }
+
     .hero{
-      width:100%;
-      height:42vh;
-      min-height:260px;
-      max-height:420px;
-      position:relative;
+      width: min(1040px, 100%);
+      border-radius: 28px;
       overflow:hidden;
-      background:#111;
+      position:relative;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.10);
+      background: #0b0e1a;
     }
 
-    .hero img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      filter:saturate(1.08) contrast(1.05);
-      transform:scale(1.02);
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background-image: url("banner.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.02);
     }
 
-    /* léger voile */
     .hero::after{
       content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,.12),
-        rgba(0,0,0,.55)
-      );
-      pointer-events:none;
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(6,8,16,.35) 0%, rgba(6,8,16,.70) 55%, rgba(6,8,16,.88) 100%);
     }
 
-    /* CONTENU */
     .content{
-      max-width:980px;
-      margin:-42px auto 0;
-      padding:24px;
+      position:relative;
+      padding: 26px 22px 20px;
     }
 
-    .panel{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
+    .top{
+      display:flex;
+      gap: 16px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
 
-    h1{
-      margin:0 0 10px 0;
-      font-size: 2.1rem;
-      letter-spacing: .2px;
+    .title{
+      margin:0;
+      font-size: clamp(28px, 4.2vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      text-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
 
     .subtitle{
-      margin:0 0 18px 0;
+      margin:10px 0 0;
       color: var(--muted);
-      line-height:1.45;
-      font-size: 1.05rem;
+      font-size: 15.5px;
+      line-height: 1.45;
+      max-width: 62ch;
     }
 
-    /* TAGS */
-    .tags{
+    .badges{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin: 14px 0 22px 0;
+      margin: 16px 0 0;
     }
 
-    .tags span{
-      background: var(--chip);
-      border: 1px solid rgba(255,255,255,.10);
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding: 8px 12px;
       border-radius: 999px;
-      font-size: .92rem;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       white-space: nowrap;
     }
 
-    /* CARDS */
-    .cards{
+    .grid{
       display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-      margin-top: 10px;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
     }
 
     .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
       background: var(--card);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 16px;
-      padding: 16px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 16px 16px 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.28);
     }
 
     .card h3{
-      margin:0 0 10px 0;
-      font-size: 1.05rem;
-      letter-spacing:.2px;
+      margin:0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
     }
 
-    .card p{
-      margin: 0 0 8px 0;
+    .card p, .card li{
+      margin:0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.45;
+    }
+
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-top: 2px;
+    }
+
+    .line{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    .dot{
+      width: 9px; height: 9px;
+      margin-top: 6px;
+      border-radius: 99px;
+      background: rgba(124,247,214,.85);
+      box-shadow: 0 0 0 4px rgba(124,247,214,.12);
+      flex: 0 0 auto;
+    }
+
+    .small{
+      color: rgba(255,255,255,.68);
+      font-size: 12.5px;
       line-height: 1.35;
-      opacity: .95;
+      margin-top: 10px;
     }
 
-    /* CTA */
     .cta{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
+      border: 0;
       width:100%;
-      margin-top: 10px;
-      padding: 14px 16px;
-      background: linear-gradient(135deg, #6ee7ff, #7cffc1);
-      color:#071018;
-      font-weight: 700;
+      padding: 14px 14px;
       border-radius: 14px;
+      font-weight: 700;
+      cursor:pointer;
       text-decoration:none;
-      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+      color: rgba(10,14,20,.95);
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      box-shadow: 0 18px 55px rgba(124,247,214,.20);
     }
 
-    .note{
-      margin-top: 10px;
-      font-size: .86rem;
-      opacity: .85;
+    .btn:hover{
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+      transition: .15s ease;
     }
 
-    footer{
-      max-width:980px;
-      margin: 18px auto 26px;
-      padding: 0 24px;
-      opacity:.65;
-      font-size:.85rem;
+    .fine{
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: var(--card2);
+      padding: 12px 12px;
+    }
+
+    .footer{
       text-align:center;
+      margin-top: 14px;
+      color: rgba(255,255,255,.55);
+      font-size: 12.5px;
     }
 
-    /* Desktop */
-    @media (min-width: 840px){
-      .cards{ grid-template-columns: repeat(3, 1fr); }
-      h1{ font-size: 2.35rem; }
-      .content{ margin-top: -56px; }
+    .kicker{
+      margin-top: 12px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: rgba(0,0,0,.22);
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
+
+    .kicker strong{ color: rgba(255,255,255,.95); }
   </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <main class="hero" role="main" aria-label="Seb IT Samedi">
+      <div class="content">
+        <div class="top">
+          <div>
+            <h1 class="title">Seb IT Samedi</h1>
+            <p class="subtitle">
+              Support informatique <strong>sur site le samedi</strong> (Brabant wallon &amp; environs) + <strong>à distance</strong> sur rendez-vous.
+              <br/>✅ <strong>Prise de rendez-vous 7j/7</strong> — réponses rapides par e-mail.
+            </p>
 
-  <!-- IMPORTANT : renomme ton image en banner.png et mets-la au même endroit que index.html -->
-  <section class="hero">
-    <img src="banner.jpg" alt="Seb IT Samedi — Apple / Windows / Chromebook" />
-  </section>
+            <div class="badges" aria-label="Services">
+              <span class="badge">Apple (macOS / iPhone / iPad)</span>
+              <span class="badge">Windows 11</span>
+              <span class="badge">Chromebook / ChromeOS</span>
+              <span class="badge">Wi-Fi &amp; imprimantes</span>
+              <span class="badge">Sauvegardes &amp; sécurité</span>
+            </div>
 
-  <main class="content">
-    <div class="panel">
-      <h1>Seb IT Samedi</h1>
+            <div class="kicker">
+              <span>⭐</span>
+              <span><strong>30+ ans d’expérience</strong> — support particuliers &amp; PME (approche calme, claire et pédagogique)</span>
+            </div>
+          </div>
+        </div>
 
-      <p class="subtitle">
-        Support informatique pour particuliers — <strong>le samedi uniquement</strong><br />
-        À domicile ou à distance (AnyDesk).
-      </p>
+        <section class="grid" aria-label="Infos">
+          <div class="card">
+            <h3>Tarifs</h3>
+            <div class="list">
+              <div class="line"><span class="dot"></span><p><strong>Sur site (samedi)</strong> : <strong>90 €</strong> / intervention <span style="color:rgba(255,255,255,.6)">(60–75 min)</span></p></div>
+              <div class="line"><span class="dot"></span><p><strong>À distance</strong> : <strong>30 €</strong> / 15 min</p></div>
+            </div>
+            <p class="small">Au-delà de 75 min : on valide ensemble avant de prolonger (pas de surprise).</p>
+          </div>
 
-      <div class="tags">
-        <span>Apple (macOS / iPhone / iPad)</span>
-        <span>Windows 11</span>
-        <span>Chromebook / ChromeOS</span>
-        <span>Wi-Fi & imprimantes</span>
-        <span>Sauvegardes & sécurité</span>
+          <div class="card">
+            <h3>Disponibilités</h3>
+            <div class="list">
+              <div class="line"><span class="dot"></span><p><strong>Sur site</strong> : samedi <strong>9h–18h</strong></p></div>
+              <div class="line"><span class="dot"></span><p><strong>À distance</strong> : mardi &amp; jeudi <strong>18h–21h</strong> (sur rendez-vous)</p></div>
+              <div class="line"><span class="dot"></span><p><strong>Rendez-vous</strong> : prise de contact <strong>7j/7</strong> par e-mail</p></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Contact</h3>
+            <div class="cta">
+              <a class="btn" href="mailto:seb.it.samedi@gmail.com?subject=Demande%20de%20rendez-vous%20%E2%80%94%20Seb%20IT%20Samedi&body=Bonjour%20Sebastien%2C%0A%0AJe%20souhaite%20un%20rendez-vous%20pour%20%3A%20%0A%0A-%20Ville%20%2F%20code%20postal%20%3A%20%0A-%20Sur%20site%20(samedi)%20ou%20%C3%A0%20distance%20%3A%20%0A-%20Probl%C3%A8me%20%3A%20%0A-%20Cr%C3%A9neaux%20souhait%C3%A9s%20%3A%20%0A%0AMerci%20%21">✉️ Me contacter par e-mail</a>
+              <div class="fine">
+                <p>Le numéro GSM est communiqué uniquement après accord de rendez-vous.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="footer">© 2026 Seb IT Samedi — Support informatique (samedi &amp; à distance sur rendez-vous)</div>
       </div>
-
-      <div class="cards">
-        <div class="card">
-          <h3>Tarifs</h3>
-          <p>90 € / intervention (60–75 min)</p>
-          <p>À distance : 30 € / 15 min</p>
-        </div>
-
-        <div class="card">
-          <h3>Zone</h3>
-          <p>Brabant wallon (priorité)</p>
-          <p>Autres zones selon disponibilité</p>
-        </div>
-
-        <div class="card">
-          <h3>Contact</h3>
-          <a class="cta" href="mailto:seb.it.samedi@gmail.com?subject=Demande%20support%20IT%20%28samedi%29">
-            📩 Me contacter par e-mail
-          </a>
-          <p class="note">
-            Le numéro GSM est communiqué uniquement après accord de rendez-vous.
-          </p>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer>© 2026 Seb IT Samedi — Support informatique (samedi uniquement)</footer>
-
+    </main>
+  </div>
 </body>
 </html>
